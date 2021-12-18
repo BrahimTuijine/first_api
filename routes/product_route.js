@@ -1,8 +1,9 @@
 const express = require("express");
-const getProduct = require("../logic/product");
+const Product = require("../logic/product");
 const router = express.Router();
 
-router.get("/", getProduct.getProducts);
-router.post("/", getProduct.insertProduct);
+router.get("/", Product.getProducts);
+router.post("/", Product.insertProduct);
+router.delete("/:id" , Product.deleteProduct)
 
 module.exports = router;

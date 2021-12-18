@@ -2,9 +2,8 @@ const express = require("express");
 const productRoute = require("./routes/product_route");
 const app = express();
 const mongoose = require("mongoose");
-const port = 3020;
 var bodyParser = require("body-parser");
-
+const cors = require("cors")
 // connect to mongo atlas
 mongoose.connect(
   "mongodb+srv://sanfour:sanfour123@cluster0.ounoz.mongodb.net/myFirstDataB?retryWrites=true&w=majority"
@@ -23,9 +22,10 @@ app.use(bodyParser.json());
 
 // requests
 app.use("/test", productRoute);
-
+app.use(cors())
 
 // open local server
+const port = process.env.PORT || 8080
 app.listen(port, () => {
   console.log("server running !!");
 });

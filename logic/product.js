@@ -27,4 +27,12 @@ module.exports = {
       name: product.name,
     });
   },
+
+  deleteProduct: async (req, res) => {
+    id = req.params.id;
+    const del = await PRODUCTS.findByIdAndDelete(id);
+    res.json({
+      "message": del,
+    });
+  },
 };
